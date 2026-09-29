@@ -130,24 +130,22 @@ export default function Register() {
                                                       </div>
                                                 </div>
 
-                                                {/* Confirm Password */}
-                                                <div>
-                                                      <label
-                                                            htmlFor="confirmPassword"
-                                                            className="mb-2 block text-sm font-semibold text-gray-700"
-                                                      >
-                                                            Confirm Password
-                                                      </label>
+                                                
+                                            
+                                                  
+                                                           
+                                                        
+                                                      
+                                                          
+                                              
 
-                                                      <input
-                                                            id="confirmPassword"
-                                                            type="password"
-                                                            placeholder="Confirm your password"
-                                                            required
-                                                            className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#38543B] focus:ring-1 focus:ring-[#38543B]"
-                                                      />
-                                                </div>
-
+                                                  
+                                                        
+                                                          
+                                         
+                                                  
+                                       
+                                       
                                                 {/* Account Type */}
                                                 <div>
                                                       <label
