@@ -177,7 +177,7 @@ export default function Register() {
                                                             </option>
 
                                                             <option value="buyer_seller">
-                                                                  Buy & Sell Boats
+                                                                   Sell Boats
                                                             </option>
                                                       </select>
 
