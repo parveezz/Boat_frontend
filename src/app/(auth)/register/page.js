@@ -2,8 +2,10 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 export default function Register() {
+      const router = useRouter()
       const [showPassword, setShowPassword] = useState(false)
       const [step, setStep] = useState(1)
       const [accountType, setAccountType] = useState("")
@@ -14,8 +16,7 @@ export default function Register() {
             if (accountType === "seller") {
                   setStep(2)
             } else {
-                  // Buyer registration API will be connected later
-                  console.log("Buyer registration")
+                  router.push("/explore")
             }
       }
 

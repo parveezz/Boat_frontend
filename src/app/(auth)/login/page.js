@@ -2,14 +2,15 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 export default function Login() {
+      const router = useRouter()
       const [showPassword, setShowPassword] = useState(false)
 
       const handleSubmit = (e) => {
             e.preventDefault()
-
-            // Login API will be connected later
+            router.push("/explore")
       }
 
       return (

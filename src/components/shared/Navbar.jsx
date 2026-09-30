@@ -4,23 +4,24 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-function NavLink({ href, children, onClick }) {
-      const pathname = usePathname()
-      const isActive = pathname === href
-
+function NavLink({ href, children, isActive, onClick, isMobile = false }) {
       return (
             <Link
                   href={href}
                   onClick={onClick}
-                  className={`text-sm font-bold transition-colors duration-200 ${isActive
-                        ? "text-black"
-                        : "text-black hover:text-[#38543B]"
+                  className={`text-sm font-bold transition-colors duration-200 ${isMobile
+                        ? isActive
+                              ? "text-[#38543B]"
+                              : "text-gray-700 hover:text-[#38543B]"
+                        : isActive
+                              ? "text-white"
+                              : "text-white/75 hover:text-white"
                         }`}
             >
                   {children}
 
                   {isActive && (
-                        <span className="mt-1 block h-0.5 w-full rounded-full bg-[#38543B]" />
+                        <span className={`mt-1 block h-0.5 w-full rounded-full ${isMobile ? "bg-[#38543B]" : "bg-white shadow-sm"}`} />
                   )}
             </Link>
       )
@@ -28,6 +29,8 @@ function NavLink({ href, children, onClick }) {
 
 export default function Navbar() {
       const [isOpen, setIsOpen] = useState(false)
+      const pathname = usePathname()
+      const [activeHref, setActiveHref] = useState("/")
 
       const navItems = [
             { label: "Home", href: "/" },
@@ -43,13 +46,14 @@ export default function Navbar() {
                         {/* Logo */}
                         <Link
                               href="/"
+                              onClick={() => setActiveHref("/")}
                               className="flex flex-col leading-none"
                         >
-                              <span className="text-2xl font-black tracking-tight text-[#38543B]">
+                              <span className="text-2xl font-black tracking-tight text-white">
                                     BOAT
                               </span>
 
-                              <span className="mt-1 text-[7px] font-bold tracking-[0.25em] text-black">
+                              <span className="mt-1 text-[7px] font-bold tracking-[0.25em] text-white/80">
                                     MARKET
                               </span>
                         </Link>
@@ -60,6 +64,8 @@ export default function Navbar() {
                                     <NavLink
                                           key={item.href}
                                           href={item.href}
+                                          isActive={activeHref === item.href}
+                                          onClick={() => setActiveHref(item.href)}
                                     >
                                           {item.label}
                                     </NavLink>
@@ -70,7 +76,7 @@ export default function Navbar() {
                         <div className="hidden items-center gap-3 md:flex">
                               <Link
                                     href="/login"
-                                    className="rounded-sm border border-[#38543B]/50 px-5 py-2.5 text-sm font-bold text-[#38543B] transition hover:bg-[#f2f6f2]"
+                                    className="rounded-sm border border-white bg-white px-5 py-2.5 text-sm font-bold text-[#38543B] shadow-sm transition hover:bg-white/90"
                               >
                                     Sign In
                               </Link>
@@ -87,7 +93,7 @@ export default function Navbar() {
                         <button
                               type="button"
                               onClick={() => setIsOpen(!isOpen)}
-                              className="flex items-center justify-center p-2 text-[#38543B] md:hidden"
+                              className="flex items-center justify-center p-2 text-white md:hidden"
                               aria-label="Toggle navigation menu"
                         >
                               {isOpen ? (
@@ -106,7 +112,12 @@ export default function Navbar() {
                                           <NavLink
                                                 key={item.href}
                                                 href={item.href}
-                                                onClick={() => setIsOpen(false)}
+                                                isActive={activeHref === item.href}
+                                                isMobile={true}
+                                                onClick={() => {
+                                                      setActiveHref(item.href)
+                                                      setIsOpen(false)
+                                                }}
                                           >
                                                 {item.label}
                                           </NavLink>
