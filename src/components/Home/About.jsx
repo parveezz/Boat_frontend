@@ -37,9 +37,9 @@ export default function About() {
                         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
 
                               {/* Image */}
-                              <div className="relative overflow-hidden rounded-2xl">
+                              <div className="relative overflow-hidden rounded-[5px]">
                                     <Image
-                                          src="/images/aboutimage.webp"
+                                          src="/images/boat-pic.avif"
                                           alt="Boat on the water"
                                           width={1200}
                                           height={800}

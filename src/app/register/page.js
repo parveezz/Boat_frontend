@@ -321,5 +321,3 @@ export default function Register() {
             </div>
       )
 }
-
-This version has no Confirm Password, and importantly, buyers don't get the Boat Documents step. Only users who select Sell Boats go to the document step.
