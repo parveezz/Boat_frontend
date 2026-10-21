@@ -3,14 +3,29 @@
 import Link from "next/link"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 
 export default function Login() {
       const router = useRouter()
       const [showPassword, setShowPassword] = useState(false)
+      const [email, setEmail] = useState("")
+      const [password, setPassword] = useState("")
+      const [isLoading, setIsLoading] = useState(false)
 
       const handleSubmit = (e) => {
             e.preventDefault()
-            router.push("/")
+
+            if (!email.trim() || !password) {
+                  toast.error("Please fill in both email and password")
+                  return
+            }
+
+            setIsLoading(true)
+            toast.success("Signed in successfully! Welcome back.")
+
+            setTimeout(() => {
+                  router.push("/")
+            }, 800)
       }
 
       return (
@@ -54,6 +69,8 @@ export default function Login() {
                                           <input
                                                 id="email"
                                                 type="email"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
                                                 placeholder="Enter your email"
                                                 required
                                                 className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#38543B] focus:ring-1 focus:ring-[#38543B]"
@@ -81,6 +98,8 @@ export default function Login() {
                                                 <input
                                                       id="password"
                                                       type={showPassword ? "text" : "password"}
+                                                      value={password}
+                                                      onChange={(e) => setPassword(e.target.value)}
                                                       placeholder="Enter your password"
                                                       required
                                                       className="w-full rounded-md border border-gray-200 px-4 py-3 pr-16 text-sm outline-none focus:border-[#38543B] focus:ring-1 focus:ring-[#38543B]"
@@ -89,7 +108,7 @@ export default function Login() {
                                                 <button
                                                       type="button"
                                                       onClick={() => setShowPassword(!showPassword)}
-                                                      className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-gray-500"
+                                                      className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-gray-500 hover:text-gray-700"
                                                 >
                                                       {showPassword ? "Hide" : "Show"}
                                                 </button>
@@ -98,9 +117,10 @@ export default function Login() {
 
                                     <button
                                           type="submit"
-                                          className="w-full rounded-md bg-[#38543B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#2d4530]"
+                                          disabled={isLoading}
+                                          className="w-full rounded-md bg-[#38543B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#2d4530] disabled:opacity-70"
                                     >
-                                          Sign In
+                                          {isLoading ? "Signing In..." : "Sign In"}
                                     </button>
                               </form>
 

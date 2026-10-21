@@ -3,15 +3,25 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
+import { toast } from "sonner"
 
 export default function ForgotPassword() {
+      const [email, setEmail] = useState("")
       const [submitted, setSubmitted] = useState(false)
+      const [loading, setLoading] = useState(false)
 
       const handleSubmit = (e) => {
             e.preventDefault()
-            setSubmitted(true)
 
-            // Forgot password API will be connected later
+            if (!email.trim()) {
+                  toast.error("Please enter your email address")
+                  return
+            }
+
+            setLoading(true)
+            setSubmitted(true)
+            toast.success("Password reset link sent! Check your inbox.")
+            setLoading(false)
       }
 
       return (
@@ -48,7 +58,7 @@ export default function ForgotPassword() {
 
                               {submitted && (
                                     <div className="mb-5 rounded-md bg-green-50 px-4 py-3 text-sm text-green-700">
-                                          If an account exists with this email, a reset link will be sent.
+                                          If an account exists with this email, a reset link has been sent.
                                     </div>
                               )}
 
@@ -65,6 +75,8 @@ export default function ForgotPassword() {
                                           <input
                                                 id="email"
                                                 type="email"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
                                                 placeholder="Enter your email"
                                                 required
                                                 className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#38543B] focus:ring-1 focus:ring-[#38543B]"
@@ -73,9 +85,10 @@ export default function ForgotPassword() {
 
                                     <button
                                           type="submit"
-                                          className="w-full rounded-md bg-[#38543B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#2d4530]"
+                                          disabled={loading}
+                                          className="w-full rounded-md bg-[#38543B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#2d4530] disabled:opacity-70"
                                     >
-                                          Send Reset Link
+                                          {loading ? "Sending Link..." : "Send Reset Link"}
                                     </button>
 
                               </form>

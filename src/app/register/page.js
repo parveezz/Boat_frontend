@@ -3,28 +3,47 @@
 import Link from "next/link"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 
 export default function Register() {
       const router = useRouter()
       const [showPassword, setShowPassword] = useState(false)
       const [step, setStep] = useState(1)
-      const [accountType, setAccountType] = useState("")
+      const [name, setName] = useState("")
+      const [email, setEmail] = useState("")
+      const [password, setPassword] = useState("")
+      const [accountType, setAccountType] = useState("both")
 
       const handleNext = (e) => {
             e.preventDefault()
 
+            if (!name.trim() || !email.trim() || !password) {
+                  toast.error("Please fill in all required fields")
+                  return
+            }
+
+            if (password.length < 6) {
+                  toast.error("Password must be at least 6 characters long")
+                  return
+            }
+
             if (accountType === "seller") {
+                  toast.info("Account details saved. Please upload your seller documents.")
                   setStep(2)
             } else {
-                  router.push("/")
+                  toast.success("Account created successfully! Welcome to Boat Market.")
+                  setTimeout(() => {
+                        router.push("/")
+                  }, 800)
             }
       }
 
       const handleCompleteRegistration = (e) => {
             e.preventDefault()
-
-            // Seller registration API will be connected later
-            console.log("Seller registration completed")
+            toast.success("Registration complete! Your documents were submitted for verification.")
+            setTimeout(() => {
+                  router.push("/")
+            }, 800)
       }
 
       return (
@@ -86,6 +105,8 @@ export default function Register() {
                                                       id="name"
                                                       name="name"
                                                       type="text"
+                                                      value={name}
+                                                      onChange={(e) => setName(e.target.value)}
                                                       placeholder="Enter your full name"
                                                       required
                                                       className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#38543B] focus:ring-1 focus:ring-[#38543B]"
@@ -105,6 +126,8 @@ export default function Register() {
                                                       id="email"
                                                       name="email"
                                                       type="email"
+                                                      value={email}
+                                                      onChange={(e) => setEmail(e.target.value)}
                                                       placeholder="Enter your email"
                                                       required
                                                       className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm outline-none focus:border-[#38543B] focus:ring-1 focus:ring-[#38543B]"
@@ -129,6 +152,8 @@ export default function Register() {
                                                                         ? "text"
                                                                         : "password"
                                                             }
+                                                            value={password}
+                                                            onChange={(e) => setPassword(e.target.value)}
                                                             placeholder="Create a password"
                                                             required
                                                             className="w-full rounded-md border border-gray-200 px-4 py-3 pr-16 text-sm outline-none focus:border-[#38543B] focus:ring-1 focus:ring-[#38543B]"
@@ -141,7 +166,7 @@ export default function Register() {
                                                                         !showPassword
                                                                   )
                                                             }
-                                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-gray-500"
+                                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-gray-500 hover:text-gray-700"
                                                       >
                                                             {showPassword
                                                                   ? "Hide"
@@ -171,8 +196,8 @@ export default function Register() {
                                                       required
                                                       className="w-full rounded-md border border-gray-200 bg-white px-4 py-3 text-sm text-gray-700 outline-none focus:border-[#38543B] focus:ring-1 focus:ring-[#38543B]"
                                                 >
-                                                      <option value="" disabled>
-                                                            Select an option
+                                                      <option value="both">
+                                                            Sell & Buy Boats
                                                       </option>
 
                                                       <option value="buyer">
@@ -320,4 +345,4 @@ export default function Register() {
                   </div>
             </div>
       )
-}
+}

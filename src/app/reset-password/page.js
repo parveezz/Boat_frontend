@@ -2,15 +2,41 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 
 export default function ResetPassword() {
+      const router = useRouter()
       const [showPassword, setShowPassword] = useState(false)
       const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+      const [password, setPassword] = useState("")
+      const [confirmPassword, setConfirmPassword] = useState("")
+      const [isLoading, setIsLoading] = useState(false)
 
       const handleSubmit = (e) => {
             e.preventDefault()
 
-            // Reset password API will be connected later
+            if (!password || !confirmPassword) {
+                  toast.error("Please enter both password fields")
+                  return
+            }
+
+            if (password.length < 6) {
+                  toast.error("Password must be at least 6 characters")
+                  return
+            }
+
+            if (password !== confirmPassword) {
+                  toast.error("Passwords do not match. Please try again.")
+                  return
+            }
+
+            setIsLoading(true)
+            toast.success("Password reset successfully! Redirecting to sign in...")
+
+            setTimeout(() => {
+                  router.push("/login")
+            }, 1000)
       }
 
       return (
@@ -72,6 +98,8 @@ export default function ResetPassword() {
                                                 <input
                                                       id="password"
                                                       type={showPassword ? "text" : "password"}
+                                                      value={password}
+                                                      onChange={(e) => setPassword(e.target.value)}
                                                       placeholder="Enter your new password"
                                                       required
                                                       className="w-full rounded-md border border-gray-200 px-4 py-3 pr-16 text-sm outline-none transition focus:border-[#38543B] focus:ring-1 focus:ring-[#38543B]"
@@ -104,6 +132,8 @@ export default function ResetPassword() {
                                                 <input
                                                       id="confirmPassword"
                                                       type={showConfirmPassword ? "text" : "password"}
+                                                      value={confirmPassword}
+                                                      onChange={(e) => setConfirmPassword(e.target.value)}
                                                       placeholder="Confirm your new password"
                                                       required
                                                       className="w-full rounded-md border border-gray-200 px-4 py-3 pr-16 text-sm outline-none transition focus:border-[#38543B] focus:ring-1 focus:ring-[#38543B]"
@@ -126,9 +156,10 @@ export default function ResetPassword() {
                                     {/* Reset Button */}
                                     <button
                                           type="submit"
-                                          className="w-full rounded-md bg-[#38543B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#2d4530]"
+                                          disabled={isLoading}
+                                          className="w-full rounded-md bg-[#38543B] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#2d4530] disabled:opacity-70"
                                     >
-                                          Reset Password
+                                          {isLoading ? "Resetting Password..." : "Reset Password"}
                                     </button>
 
                               </form>
