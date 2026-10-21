@@ -6,6 +6,7 @@ import DocumentItem from "./DocumentItem"
 export default function DocumentsTab({
     documents,
     accountType = "Dealer", // "Dealer" | "Broker" | "Private Seller"
+    uploadingDocId = null,
     onReplace,
     onDownload,
     onDelete,
@@ -27,30 +28,11 @@ export default function DocumentsTab({
 
     return (
         <div>
-            {/* Section Header */}
-            <div>
-                <div className="flex flex-wrap items-center gap-2.5">
-                    <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900">
-                        {accountType === "Buyer"
-                            ? "Buyer Verification Documents"
-                            : accountType === "Private Seller"
-                            ? "Vessel Ownership & Seller Documents"
-                            : "Business Documents"}
-                    </h2>
-                    <span className="inline-flex items-center rounded-md bg-[#f0f7f1] border border-[#38543B]/20 px-2.5 py-0.5 text-xs sm:text-sm font-semibold text-[#38543B]">
-                        ({accountType})
-                    </span>
-                </div>
-                <p className="mt-1 text-xs sm:text-[13px] text-gray-500 leading-relaxed max-w-3xl">
-                    Upload the documents below for your <span className="font-semibold text-gray-800">{accountType}</span> registration to complete identity verification. Verified accounts receive a trust badge, which increases buyer and seller confidence. Documents are used for verification only and are <span className="font-semibold text-gray-700">never shown publicly</span>.
-                </p>
-            </div>
-
             {/* Verification Status Banner */}
             <div
                 className={`mt-6 flex items-center gap-3 rounded-xl border px-4 py-3 ${isVerified
-                        ? "border-green-200 bg-green-50"
-                        : "border-amber-200 bg-amber-50"
+                    ? "border-green-200 bg-green-50"
+                    : "border-amber-200 bg-amber-50"
                     }`}
             >
                 <span
@@ -73,6 +55,7 @@ export default function DocumentsTab({
                     <DocumentItem
                         key={doc.id}
                         doc={doc}
+                        isUploading={uploadingDocId === doc.id}
                         onReplace={onReplace}
                         onDownload={onDownload}
                         onDelete={onDelete}
@@ -85,7 +68,7 @@ export default function DocumentsTab({
                 <button
                     type="button"
                     onClick={handleSaveUpdates}
-                    className="rounded-xl bg-[#38543B] px-8 py-3.5 text-xs sm:text-sm font-semibold text-white transition hover:bg-[#2d4530] active:scale-[0.99] shadow-xs"
+                    className="rounded-xl bg-gray-900 px-8 py-3.5 text-xs sm:text-sm font-semibold text-white transition hover:bg-black active:scale-[0.99] shadow-xs"
                 >
                     Submit for Verification
                 </button>

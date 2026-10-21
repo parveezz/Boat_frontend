@@ -42,17 +42,6 @@ export default function NotificationSettingsTab() {
 
     return (
         <div>
-            <div>
-                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900">
-                    Notification Settings
-                </h2>
-                <p className="mt-1 text-xs sm:text-[13px] text-gray-500 leading-relaxed max-w-3xl">
-                    Configure your marine alerts, purchase offer notifications, sea trial updates, and boat listing reminders.
-                </p>
-            </div>
-
-            <hr className="my-6 border-gray-100" />
-
             <div className="space-y-8">
                 {/* 1. Marine & Marketplace Alerts */}
                 <div>
@@ -95,10 +84,10 @@ export default function NotificationSettingsTab() {
                                     type="checkbox"
                                     checked={notifications[item.key]}
                                     onChange={() => toggle(item.key)}
-                                    className="mt-0.5 h-4 w-4 rounded border-gray-300 text-[#38543B] focus:ring-[#38543B] cursor-pointer accent-[#38543B]"
+                                    className="mt-0.5 h-4 w-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900 cursor-pointer accent-gray-900"
                                 />
                                 <div>
-                                    <p className="text-xs sm:text-[13px] font-semibold text-gray-900 group-hover:text-[#38543B] transition-colors">
+                                    <p className="text-xs sm:text-[13px] font-semibold text-gray-900 group-hover:text-black transition-colors">
                                         {item.title}
                                     </p>
                                     <p className="text-[11px] text-gray-400 font-normal mt-0.5 leading-relaxed">
@@ -156,10 +145,10 @@ export default function NotificationSettingsTab() {
                                     type="checkbox"
                                     checked={notifications[item.key]}
                                     onChange={() => toggle(item.key)}
-                                    className="mt-0.5 h-4 w-4 rounded border-gray-300 text-[#38543B] focus:ring-[#38543B] cursor-pointer accent-[#38543B]"
+                                    className="mt-0.5 h-4 w-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900 cursor-pointer accent-gray-900"
                                 />
                                 <div>
-                                    <p className="text-xs sm:text-[13px] font-semibold text-gray-900 group-hover:text-[#38543B] transition-colors">
+                                    <p className="text-xs sm:text-[13px] font-semibold text-gray-900 group-hover:text-black transition-colors">
                                         {item.title}
                                     </p>
                                     <p className="text-[11px] text-gray-400 font-normal mt-0.5 leading-relaxed">
@@ -212,10 +201,10 @@ export default function NotificationSettingsTab() {
                                     type="checkbox"
                                     checked={notifications[item.key]}
                                     onChange={() => toggle(item.key)}
-                                    className="mt-0.5 h-4 w-4 rounded border-gray-300 text-[#38543B] focus:ring-[#38543B] cursor-pointer accent-[#38543B]"
+                                    className="mt-0.5 h-4 w-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900 cursor-pointer accent-gray-900"
                                 />
                                 <div>
-                                    <p className="text-xs sm:text-[13px] font-semibold text-gray-900 group-hover:text-[#38543B] transition-colors">
+                                    <p className="text-xs sm:text-[13px] font-semibold text-gray-900 group-hover:text-black transition-colors">
                                         {item.title}
                                     </p>
                                     <p className="text-[11px] text-gray-400 font-normal mt-0.5 leading-relaxed">
@@ -253,10 +242,10 @@ export default function NotificationSettingsTab() {
                                     type="checkbox"
                                     checked={notifications[item.key]}
                                     onChange={() => toggle(item.key)}
-                                    className="mt-0.5 h-4 w-4 rounded border-gray-300 text-[#38543B] focus:ring-[#38543B] cursor-pointer accent-[#38543B]"
+                                    className="mt-0.5 h-4 w-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900 cursor-pointer accent-gray-900"
                                 />
                                 <div>
-                                    <p className="text-xs sm:text-[13px] font-semibold text-gray-900 group-hover:text-[#38543B] transition-colors">
+                                    <p className="text-xs sm:text-[13px] font-semibold text-gray-900 group-hover:text-black transition-colors">
                                         {item.title}
                                     </p>
                                     <p className="text-[11px] text-gray-400 font-normal mt-0.5 leading-relaxed">
@@ -274,7 +263,7 @@ export default function NotificationSettingsTab() {
                 <button
                     type="button"
                     onClick={handleUpdate}
-                    className="rounded-xl bg-[#38543B] px-8 py-3.5 text-xs sm:text-sm font-semibold text-white transition hover:bg-[#2d4530] active:scale-[0.99] shadow-xs"
+                    className="rounded-xl bg-gray-900 px-8 py-3.5 text-xs sm:text-sm font-semibold text-white transition hover:bg-black active:scale-[0.99] shadow-xs"
                 >
                     Update Notification
                 </button>

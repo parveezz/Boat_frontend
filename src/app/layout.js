@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google"
-import { Toaster } from "sonner"
+import CustomToaster from "@/components/shared/CustomToaster"
 import "./globals.css"
 
 const inter = Inter({
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans antialiased`} suppressHydrationWarning>
         {children}
-        <Toaster position="top-right" richColors closeButton />
+        <CustomToaster />
       </body>
     </html>
   )

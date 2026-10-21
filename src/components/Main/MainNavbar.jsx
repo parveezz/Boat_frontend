@@ -5,7 +5,6 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useState, useRef, useEffect } from "react"
 import {
-    User,
     Menu,
     X,
     LogOut,
@@ -57,7 +56,6 @@ export default function MainNavbar() {
     }
 
     const profileMenuItems = [
-        { label: "My Profile", href: "/profile", icon: User },
         { label: "My Orders", href: "/myOrders", icon: ShoppingBag },
         { label: "Wishlist", href: "/wishlist", icon: Heart },
         { label: "Settings", href: "/settings", icon: Settings },
@@ -264,13 +262,13 @@ export default function MainNavbar() {
                     })}
                     <div className="h-px w-full bg-white/10 my-2" />
                     <Link
-                        href="/profile"
+                        href="/settings"
                         className="flex items-center gap-2 text-sm font-bold text-[#A3D977] hover:text-white transition-colors"
                         onClick={() => setIsOpen(false)}
                         suppressHydrationWarning
                     >
-                        <User size={16} />
-                        Profile
+                        <Settings size={16} />
+                        Settings
                     </Link>
                 </div>
             </div>

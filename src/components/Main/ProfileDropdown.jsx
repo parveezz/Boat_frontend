@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState, useRef, useEffect } from "react"
-import { User, LogOut, Settings, Heart, ShoppingBag, ChevronDown, ChevronUp } from "lucide-react"
+import { LogOut, Settings, Heart, ShoppingBag, ChevronDown, ChevronUp } from "lucide-react"
 
 export default function ProfileDropdown() {
     const [isOpen, setIsOpen] = useState(false)
@@ -38,9 +38,9 @@ export default function ProfileDropdown() {
     }
 
     const menuItems = [
-        { label: "Profile & Settings", href: "/settings", icon: Settings },
         { label: "My Orders", href: "/myOrders", icon: ShoppingBag },
         { label: "Wishlist", href: "/wishlist", icon: Heart },
+        { label: "Settings", href: "/settings", icon: Settings },
     ]
 
     return (

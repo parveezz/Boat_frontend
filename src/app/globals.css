@@ -41,3 +41,68 @@ body,
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ==========================================================================
+   Custom Marine Slate Toaster Notification (Sleek Dark Pill Design)
+   ========================================================================== */
+[data-sonner-toaster] [data-sonner-toast],
+.custom-boat-toast {
+  background: linear-gradient(135deg, #1a2536 0%, #111a26 100%) !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 20px 45px -10px rgba(10, 16, 26, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05) inset !important;
+  padding: 14px 18px !important;
+  font-family: var(--font-inter), sans-serif !important;
+  backdrop-filter: blur(12px) !important;
+  min-width: 320px !important;
+  max-width: 440px !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast] [data-content] {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  flex: 1 1 auto !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast] [data-title] {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 14.5px !important;
+  line-height: 1.35 !important;
+  letter-spacing: -0.01em !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast] [data-description] {
+  color: #94a3b8 !important;
+  font-size: 12.5px !important;
+  line-height: 1.45 !important;
+  font-weight: 400 !important;
+  margin-top: 2px !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast] [data-icon] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast] [data-close-button] {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  color: #94a3b8 !important;
+  border-radius: 9999px !important;
+  top: 10px !important;
+  right: 10px !important;
+  transition: all 0.2s ease !important;
+}
+
+[data-sonner-toaster] [data-sonner-toast] [data-close-button]:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+}

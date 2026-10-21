@@ -13,11 +13,11 @@ export default function Breadcrumbs({ activeTab }) {
             <Link href="/" className="hover:text-gray-900 transition-colors">
                 Home
             </Link>
-            <span className="mx-2 text-gray-400">/</span>
+            <span className="mx-2 text-gray-400 text-xs font-semibold select-none">&gt;&gt;</span>
             <Link href="/settings" className="hover:text-gray-900 transition-colors">
                 Account&apos;s Settings
             </Link>
-            <span className="mx-2 text-gray-400">/</span>
+            <span className="mx-2 text-gray-400 text-xs font-semibold select-none">&gt;&gt;</span>
             <span className="text-gray-600 font-normal">
                 {tabLabels[activeTab] || "Documents"}
             </span>
