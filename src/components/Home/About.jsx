@@ -10,78 +10,63 @@ export default function About() {
       return (
             <section
                   id="about"
-                  className="w-full bg-[#f5f7f4] px-6 py-12 lg:px-10 lg:py-16"
+                  className="flex min-h-screen w-full flex-col justify-center bg-[#f5f7f4] px-6 py-12 lg:px-10 lg:py-12"
             >
-                  <div className="mx-auto max-w-7xl">
-
-                        {/* Heading */}
-                        <div className="mb-8 max-w-3xl">
-                              <p className="mb-2 text-sm font-bold uppercase tracking-[0.2em] text-[#38543B]">
-                                    About Us
-                              </p>
-
-                              <h2 className="text-3xl font-bold leading-tight text-gray-900 md:text-4xl lg:text-5xl">
-                                    Find the boat that fits
-                                    <span className="text-[#38543B]"> your journey.</span>
-                              </h2>
-
-                              <p className="mt-4 text-base leading-7 text-gray-600">
-                                    We make buying and selling boats simple, transparent, and
-                                    convenient. Whether you are looking for your first boat or
-                                    upgrading to your next one, our marketplace brings boats and
-                                    buyers together in one place.
-                              </p>
-                        </div>
-
-                        {/* Content */}
-                        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+                  {/* Removed max-w-7xl to allow full width */}
+                  <div className="w-full">
+                        {/* Content Grid */}
+                        <div className="grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-16">
 
                               {/* Image */}
-                              <div className="relative overflow-hidden rounded-2xl">
+                              <div className="relative w-full overflow-hidden rounded-2xl shadow-md">
                                     <Image
                                           src="/images/aboutimage.webp"
                                           alt="Boat on the water"
                                           width={1200}
                                           height={800}
-                                          className="h-[320px] w-full object-cover md:h-[380px]"
+                                          // Removed fixed heights so it scales with full width
+                                          className="h-auto w-full object-cover"
                                     />
-
-                                    <div className="absolute inset-0 bg-black/10" />
                               </div>
 
-                              {/* Text */}
-                              <div>
-                                    <h3 className="text-2xl font-bold text-gray-900 md:text-3xl">
-                                          Built for people who love being on the water.
-                                    </h3>
+                              {/* Text Content */}
+                              <div className="w-full">
+                                    {/* Eyebrow */}
+                                    <p className="mb-2 text-sm font-bold uppercase tracking-[0.2em] text-[#38543B]">
+                                          About Us
+                                    </p>
 
-                                    <p className="mt-4 text-sm leading-7 text-gray-600">
+                                    {/* Main Heading */}
+                                    <h2 className="text-3xl font-bold leading-tight text-gray-900 md:text-4xl lg:text-5xl">
+                                          Built for people who love <br />
+                                          <span className="text-[#38543B]">being on the water.</span>
+                                    </h2>
+
+                                    {/* Brighter body text */}
+                                    <p className="mt-5 text-base leading-7 text-gray-700">
                                           Our goal is to create a trusted marketplace where boat owners
                                           can showcase their boats and buyers can discover the right
                                           vessel with confidence.
                                     </p>
 
-                                    <p className="mt-3 text-sm leading-7 text-gray-600">
+                                    <p className="mt-3 text-base leading-7 text-gray-700">
                                           From fishing boats and family cruisers to performance and
                                           recreational boats, we bring different types of boats together
                                           so you can explore your options easily.
                                     </p>
 
                                     {/* Features */}
-                                    <div className="mt-6 grid gap-5 sm:grid-cols-2">
-
+                                    <div className="mt-8 grid gap-6 sm:grid-cols-2">
                                           {/* Trusted Listings */}
                                           <div className="flex items-start gap-3">
-                                                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#38543B] text-white">
-                                                      <FiCheckCircle size={17} />
+                                                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#38543B] text-white shadow-sm">
+                                                      <FiCheckCircle size={18} />
                                                 </div>
-
                                                 <div>
                                                       <h4 className="text-sm font-bold text-gray-900">
                                                             Trusted Listings
                                                       </h4>
-
-                                                      <p className="mt-1 text-xs leading-5 text-gray-600">
+                                                      <p className="mt-1 text-sm leading-6 text-gray-700">
                                                             Discover detailed boat listings with the information you need.
                                                       </p>
                                                 </div>
@@ -89,16 +74,14 @@ export default function About() {
 
                                           {/* Wide Selection */}
                                           <div className="flex items-start gap-3">
-                                                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#38543B] text-white">
-                                                      <FiAnchor size={17} />
+                                                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#38543B] text-white shadow-sm">
+                                                      <FiAnchor size={18} />
                                                 </div>
-
                                                 <div>
                                                       <h4 className="text-sm font-bold text-gray-900">
                                                             Wide Selection
                                                       </h4>
-
-                                                      <p className="mt-1 text-xs leading-5 text-gray-600">
+                                                      <p className="mt-1 text-sm leading-6 text-gray-700">
                                                             Explore boats for different lifestyles, needs, and budgets.
                                                       </p>
                                                 </div>
@@ -106,16 +89,14 @@ export default function About() {
 
                                           {/* Easy to Explore */}
                                           <div className="flex items-start gap-3">
-                                                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#38543B] text-white">
-                                                      <FiArrowUpRight size={17} />
+                                                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#38543B] text-white shadow-sm">
+                                                      <FiArrowUpRight size={18} />
                                                 </div>
-
                                                 <div>
                                                       <h4 className="text-sm font-bold text-gray-900">
                                                             Easy to Explore
                                                       </h4>
-
-                                                      <p className="mt-1 text-xs leading-5 text-gray-600">
+                                                      <p className="mt-1 text-sm leading-6 text-gray-700">
                                                             Browse listings and find the boat you are looking for.
                                                       </p>
                                                 </div>
@@ -123,24 +104,20 @@ export default function About() {
 
                                           {/* Made for Boaters */}
                                           <div className="flex items-start gap-3">
-                                                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#38543B] text-white">
-                                                      <FiHeart size={17} />
+                                                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#38543B] text-white shadow-sm">
+                                                      <FiHeart size={18} />
                                                 </div>
-
                                                 <div>
                                                       <h4 className="text-sm font-bold text-gray-900">
                                                             Made for Boaters
                                                       </h4>
-
-                                                      <p className="mt-1 text-xs leading-5 text-gray-600">
+                                                      <p className="mt-1 text-sm leading-6 text-gray-700">
                                                             Designed around the needs of people who enjoy life on the water.
                                                       </p>
                                                 </div>
                                           </div>
-
                                     </div>
                               </div>
-
                         </div>
                   </div>
             </section>
